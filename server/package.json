@@ -8,7 +8,7 @@
     "dev__": "nodemon -w sof --exec \"babel-node sof --presets env\"",
     "build__": "babel sof -s -D -d dist --presets env"
   },
-  "author": "wozzp",
+  "author": "wozzp ",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^7.0.0",
