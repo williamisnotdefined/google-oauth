@@ -22,4 +22,5 @@ class Server {
 	}
 }
 
-module.exports = new Server().express
+const expressServer = new Server().express;
+export default expressServer
