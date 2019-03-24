@@ -8,4 +8,9 @@ para se logar devo pegar no banco (tabela user?) email e google_id
 
 - 401 page (optional)
 
+
+
+aprender:
+verificar que merda é seeders (seeder-path -> sequelize)
+
 */
