@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import routes from "./routes";
-import passportMiddleware from "./middlewares/passport";
+import passportMiddleware from "./passport";
 
 class Server {
 	constructor() {
@@ -25,4 +25,4 @@ class Server {
 }
 
 const expressServer = new Server().express;
-export default expressServer
+export default expressServer;
