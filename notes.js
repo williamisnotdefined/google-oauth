@@ -11,9 +11,11 @@ para se logar devo pegar no banco (tabela user?) email e google_id
 
 
 ## CONTINUAR DAQUI
--> middleware de autenticação
 -> SessionController
-->
+	- register (deve ser codada pensando em Google OAuth)
+
+-> UserController
+	- createOrGetUser
 
 
 
