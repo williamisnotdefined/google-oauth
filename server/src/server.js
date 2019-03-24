@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+// import routes from "./routes";
+
 class Server {
 	constructor() {
 		this.express = express();
@@ -16,6 +18,7 @@ class Server {
 
 	routes () {
 		// this.express.use(require('./routes'));
+		// this.express.use(routes);
 	}
 }
 
