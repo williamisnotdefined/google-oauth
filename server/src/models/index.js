@@ -1,5 +1,3 @@
-'use strict'
-
 import { readdirSync } from "fs";
 import path from "path";
 import Sequelize from "sequelize";
