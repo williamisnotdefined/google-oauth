@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 
-// import routes from "./routes";
+import routes from "./routes";
+import passportMiddleware from "./middlewares/passport";
 
 class Server {
 	constructor() {
@@ -14,11 +15,12 @@ class Server {
 	middlewares () {
 		this.express.use(cors());
 		this.express.use(express.json());
+		passportMiddleware();
 	}
 
 	routes () {
 		// this.express.use(require('./routes'));
-		// this.express.use(routes);
+		this.express.use(routes);
 	}
 }
 
