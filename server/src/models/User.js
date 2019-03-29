@@ -1,20 +1,23 @@
-import jwt from "jsonwebtoken";
-import { config } from "dotenv";
-config();
-
 export default (sequelize, DataTypes) => {
-	const User = sequelize.define('User', {
+	class User extends sequelize.Model { }
+	User.init({
 		name: DataTypes.STRING,
-		email: DataTypes.STRING
-	});
+		email: DataTypes.STRING,
+		photo: DataTypes.STRING,
+		googleId: DataTypes.STRING
+	}, { sequelize });
 
-	User.prototype.generateToken = ({ id }) => jwt.sign(
+	User/*.prototype*/.generateToken = ({ id }) => jwt.sign(
 		{ id },
 		process.env.AUTH_SECRET,
-		{
-			expiresIn: process.env.AUTH_EXPIRES_IN
-		}
+		{ expiresIn: process.env.AUTH_EXPIRES_IN }
 	);
+
+	User.sync().then(() => {
+		console.log('User sync executed.')
+	}).finally(() => {
+		sequelize.close();
+	});
 
 	return User;
 }

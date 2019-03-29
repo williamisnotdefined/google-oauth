@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
+import passport from "passport";
 
 import routes from "./routes";
-import passportMiddleware from "./passport";
+import passportConfig from "./passport";
 
 class Server {
 	constructor() {
@@ -15,7 +16,8 @@ class Server {
 	middlewares () {
 		this.express.use(cors());
 		this.express.use(express.json());
-		passportMiddleware();
+		this.express.use(passport.initialize());
+		passportConfig()
 	}
 
 	routes () {
