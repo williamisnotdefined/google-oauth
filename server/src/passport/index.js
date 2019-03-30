@@ -13,9 +13,11 @@ passport.deserializeUser((id, done) => {
 });
 
 import GoogleStrategy from "./google";
+import JwtStrategy from "./jwt";
 
 export default () => {
     passport.use(
+        JwtStrategy(),
         GoogleStrategy()
     );
 };
