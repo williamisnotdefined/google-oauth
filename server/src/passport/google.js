@@ -5,7 +5,6 @@ config();
 import mongoose from "../db";
 const User = mongoose.model("User");
 
-
 export default () => (
 	new Strategy({
 		clientID: process.env.GOOGLE_CLIENT_ID,
@@ -16,11 +15,7 @@ export default () => (
 		const { displayName, id, photos } = profile;
 		const photo = photos.length > 0 ? photos[0].value : null
 
-		console.log('profile: ', profile);
-
-		let user = await User.findOne({
-			googleId: id
-		});
+		let user = await User.findOne({ googleId: id });
 
 		if (!user) {
 			user = await User.create({
