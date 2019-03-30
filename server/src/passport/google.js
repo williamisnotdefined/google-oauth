@@ -1,9 +1,8 @@
-import jwt from "jsonwebtoken";
 import { Strategy } from "passport-google-oauth20";
 import { config } from "dotenv";
 config();
 
-// import Session from "../controllers/Session";
+
 
 import mongoose from "../db";
 const User = mongoose.model("User");
@@ -27,13 +26,6 @@ export default () => (
 				photo
 			});
 		}
-
-		// const token = Session.getToken(user);
-		jwt.sign(
-			{ id: user.googleId },
-			process.env.AUTH_SECRET,
-			{ expiresIn: process.env.AUTH_EXPIRES_IN }
-		);
 
 		done(null, user);
 
