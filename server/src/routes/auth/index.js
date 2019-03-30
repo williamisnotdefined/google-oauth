@@ -10,7 +10,7 @@ router.get("/google", passport.authenticate('google', {
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 	console.log('i am in auth/google/redirect');
-	res.json({test: "lalala"})
+	res.json({test: "lalala", user: req.user})
 });
 
 export default router;
