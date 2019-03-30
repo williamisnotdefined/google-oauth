@@ -18,7 +18,5 @@
 - abrir janela de login do google em uma popup
 
 
-aprender:
-verificar que merda é seeders (seeder-path -> sequelize)
 
 */

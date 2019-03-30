@@ -4,11 +4,11 @@ import passport from "passport";
 
 import routes from "./routes";
 import passportConfig from "./passport";
+import "./db";
 
 class Server {
 	constructor() {
 		this.express = express();
-
 		this.middlewares();
 		this.routes();
 	}
@@ -17,7 +17,7 @@ class Server {
 		this.express.use(cors());
 		this.express.use(express.json());
 		this.express.use(passport.initialize());
-		passportConfig()
+		passportConfig();
 	}
 
 	routes () {

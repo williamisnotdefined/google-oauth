@@ -1,8 +1,10 @@
 import { Strategy } from "passport-google-oauth20";
-import { User } from "../models";
-
 import { config } from "dotenv";
 config();
+
+import mongoose from "../db";
+const User = mongoose.model("User");
+
 
 export default () => (
 	new Strategy({
@@ -14,20 +16,21 @@ export default () => (
 		const { displayName, id, photos } = profile;
 		const photo = photos.length > 0 ? photos[0].value : null
 
-		// console.log('profile: ', profile);
-		console.log('User: ', User);
+		console.log('profile: ', profile);
 
-		// const user = await User.findOrCreate({
-		// 	where: {
-		// 		name: displayName,
-		// 		googleId: id,
-		// 		photo: photo
-		// 	}
-		// });
+		let user = await User.findOne({
+			googleId: id
+		});
 
-		/*
-			TODO:
-			criar usuário ou logar
-		*/
+		if (!user) {
+			user = await User.create({
+				name: displayName,
+				googleId: id,
+				photo
+			});
+		}
+
+		done(null, user);
+
 	})
 )

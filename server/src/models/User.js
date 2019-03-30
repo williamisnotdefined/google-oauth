@@ -1,23 +1,31 @@
-export default (sequelize, DataTypes) => {
-	class User extends sequelize.Model { }
-	User.init({
-		name: DataTypes.STRING,
-		email: DataTypes.STRING,
-		photo: DataTypes.STRING,
-		googleId: DataTypes.STRING
-	}, { sequelize });
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 
-	User/*.prototype*/.generateToken = ({ id }) => jwt.sign(
-		{ id },
-		process.env.AUTH_SECRET,
-		{ expiresIn: process.env.AUTH_EXPIRES_IN }
-	);
+const UserSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		require: true
+	},
+	googleId: {
+		type: String,
+		require: true
+	},
+	photo: {
+		type: String,
+		require: true
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now
+	}
+});
 
-	User.sync().then(() => {
-		console.log('User sync executed.')
-	}).finally(() => {
-		sequelize.close();
-	});
+UserSchema.methods = {
+	generateToken() {
+		return jwt.sign({ id: this.id }, "secret", {
+			expiresIn: 86400
+		});
+	}
+};
 
-	return User;
-}
+mongoose.model("User", UserSchema);
