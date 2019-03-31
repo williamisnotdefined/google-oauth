@@ -7,10 +7,7 @@ class UserController {
 		try {
 			console.log('UserController LIST!');
 			const users = await User.find();
-			console.log('users:' , users)
-			return res.json({
-				users: users //users.map(({ name, photo }) => ({ name, photo }))
-			});
+			return res.json({ users });
 		} catch (err) {
 			return res.json({ error: err, msg: "Ocorreu um erro." })
 		}
