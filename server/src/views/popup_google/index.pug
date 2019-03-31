@@ -1,4 +1,7 @@
 html
-    body
-        h1 Hello World!
-        p Hi there, #{user}!
+    head
+        script.
+            var user=#{user};
+            var token="#{token}";
+            window.opener.callbackGoogle(user, token);
+            window.close();

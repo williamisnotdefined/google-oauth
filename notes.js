@@ -19,4 +19,10 @@
 
 
 
+
+
+https://gist.github.com/kaku87/6052362
+https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development
+
+
 */

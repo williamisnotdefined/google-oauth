@@ -19,6 +19,9 @@ class Home extends PureComponent {
 	}
 
 	openGooglePopup = () => {
+		window.callbackGoogle = (data) => {
+			console.log('data: ', data)
+		}
 		window.open(
 			'http://localhost:9001/auth/google',
 			'popUpWindow',

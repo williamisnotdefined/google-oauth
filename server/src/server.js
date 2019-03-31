@@ -21,7 +21,7 @@ class Server {
 	}
 
 	middlewares() {
-		this.express.use(cors());
+		this.express.use(cors({origin: 'http://localhost:3000'}));
 		this.express.use(express.json());
 		this.express.use(passport.initialize());
 		passportConfig();
