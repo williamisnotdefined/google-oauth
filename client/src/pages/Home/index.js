@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+//import { bindActionCreators } from 'redux';
 
-// import { Creators } 
+// import { Creators }
 
 class Home extends PureComponent {
 
@@ -12,21 +12,28 @@ class Home extends PureComponent {
 	};
 
 	componentDidMount() {
-		console.log('this.props: ', this.props);
 		if (this.props.token) {
 
 		}
 	}
 
 	openGooglePopup = () => {
-		window.callbackGoogle = (data) => {
-			console.log('data: ', data)
-		}
+
+		window.addEventListener("message", function(ev) {
+			if (ev.data.message === "sending_token_to_client") {
+				console.log(
+					'deliverResult: ', ev.data.result
+				);
+				ev.source.close();
+			}
+		});
+
 		window.open(
 			'http://localhost:9001/auth/google',
-			'popUpWindow',
-			'height=570,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes'
+			'',
+			'height=570,width=500'
 		);
+
 	}
 
 	render() {

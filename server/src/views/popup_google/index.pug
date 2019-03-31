@@ -3,5 +3,18 @@ html
         script.
             var user=#{user};
             var token="#{token}";
-            window.opener.callbackGoogle(user, token);
-            window.close();
+            //- window.opener.callbackGoogle(user, token);
+            //- window.close();
+
+            window.opener.postMessage({
+                "message": "sending_token_to_client",
+                "result": {user: user, token: token}
+            }, '*');
+
+            //- window.addEventListener("message", function(ev) {
+            //-     if (ev.data.message === "requestResult") {
+            //-         // ev.source is the opener
+            //-         alert("sffa");
+            //-         ev.source.postMessage({ message: "deliverResult", result: {user: user, token: token} }, "*");
+            //-     }
+            //- });

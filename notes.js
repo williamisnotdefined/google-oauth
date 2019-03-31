@@ -21,6 +21,7 @@
 
 https://gist.github.com/kaku87/6052362
 https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development
+https://auth0.com/blog/build-react-apps-using-react-hooks-and-auth0-auth-popup/#closing-popup
 
 
 */
