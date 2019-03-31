@@ -2,8 +2,6 @@ import { Strategy } from "passport-google-oauth20";
 import { config } from "dotenv";
 config();
 
-
-
 import mongoose from "../db";
 const User = mongoose.model("User");
 

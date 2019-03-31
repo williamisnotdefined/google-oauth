@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-// const { secret } = require('../../config/auth')
+import { config } from "dotenv";
+config();
 
 module.exports = async (req, res, next) => {
 	const authHeader = req.headers.authorization
@@ -15,7 +16,7 @@ module.exports = async (req, res, next) => {
 	}
 
 	try {
-		const { id } = await jwt.verify(token, "secret") // arrumar isso depois
+		const { id } = await jwt.verify(token, process.env.AUTH_SECRET)
 		req.userId = id
 
 		return next();
