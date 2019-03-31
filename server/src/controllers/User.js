@@ -6,9 +6,13 @@ class UserController {
 	async list(req, res) {
 		try {
 			console.log('UserController LIST!');
-			return res.json({ user: [] })
-		} catch(err) {
-			return res.json({ error: "Ocorreu um erro." })
+			const users = await User.find();
+			console.log('users:' , users)
+			return res.json({
+				users: users //users.map(({ name, photo }) => ({ name, photo }))
+			});
+		} catch (err) {
+			return res.json({ error: err, msg: "Ocorreu um erro." })
 		}
 	}
 

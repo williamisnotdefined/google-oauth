@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
 
+const excludeFromQuery = (doc, ret) => {
+	delete ret._id;
+	delete ret.googleId;
+	delete ret.createdAt;
+	delete ret.__v;
+};
+
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -16,6 +23,13 @@ const UserSchema = new mongoose.Schema({
 	createdAt: {
 		type: Date,
 		default: Date.now
+	}
+}, {
+	toObject: {
+		transform: excludeFromQuery
+	},
+	toJSON: {
+		transform: excludeFromQuery
 	}
 });
 
