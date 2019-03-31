@@ -5,7 +5,7 @@ import ducks from './ducks';
 // import sagas from './sagas';
 
 // const sagaMiddleware = createSagaMiddleware();
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose;
+const devTools = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose;
 
 const store = createStore(
 	ducks

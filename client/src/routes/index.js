@@ -5,11 +5,12 @@ import PrivateRoute from './PrivateRoute';
 
 // import { deleteToken } from '../services/auth';
 
-// import Home from '../pages/home';
+import Home from "../pages/Home";
+import NotFound from "../pages/NotFound";
 
-const Home = () => (<div>home</div>);
-const UserList = () => (<div>UserList</div>);
-const NotFound = () => (<div>404</div>);
+const UserList = () => (
+	<div>UserList</div>
+);
 
 const Routes = () => (
 	<Switch>

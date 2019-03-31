@@ -1,7 +1,9 @@
+import { getToken } from "../../services/auth";
 const INITIAL_STATE = {
-	name: null,
-	photo: null
-}
+	userName: null,
+	photo: null,
+	token: getToken()
+};
 
 export const Types = {
 	SET_USER: 'user/SET_USER'

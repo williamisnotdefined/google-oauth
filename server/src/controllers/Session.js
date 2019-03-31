@@ -15,7 +15,7 @@ class SessionController {
 
 	async init (req, res) {
 		const token = await generateToken(req.user);
-		res.json({ user: req.user, token })
+		res.render('popup_google/index', { user: req.user, token })
 	}
 
 }
